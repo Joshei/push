@@ -868,6 +868,7 @@ func receiveAjax(w http.ResponseWriter, r *http.Request) {
 */
 
 type forTemplate struct {
+	Condition int
 	AmountPurchased int
 	ProductID       int
 	ProductCatTitle string
@@ -1025,8 +1026,10 @@ func display1(w http.ResponseWriter, r *http.Request) {
 
 	var templ1 forTemplate
 
+	var Condition = 0;
 	for rows.Next() {
 
+		Condition++;
 		var ProductCost float64
 		var ProductQuantity int
 		var gKeyword1, gKeyword2, gKeyword3, ProductName, ProductDescription, ProductCatTitle, ProductFilename, AmountToPurchaseID, AmountPurchasedID string
@@ -1083,7 +1086,7 @@ func display1(w http.ResponseWriter, r *http.Request) {
 			AmountPurchased = 0
 		}
 
-		templ1 = forTemplate{AmountPurchased, ProductID, ProductCatTitle, titleID, ProductName, descID, ProductDescription, costID, ProductCost, quantityID, ProductQuantity,
+		templ1 = forTemplate{Condition, AmountPurchased, ProductID, ProductCatTitle, titleID, ProductName, descID, ProductDescription, costID, ProductCost, quantityID, ProductQuantity,
 			key1ID, globKeyword, key2ID, globKeyword, key3ID, globKeyword, ProductFilename, AmountToPurchaseID, AmountPurchasedID, mainDivID}
 
 		fmt.Println(templ1)

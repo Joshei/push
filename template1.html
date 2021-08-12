@@ -33,6 +33,10 @@
 
 				</style>   
 			</head>
+
+
+			
+	 
 			
 			<iframe class = "" id="upload_target" name="upload_target"  style="width:0;height:0;border:0px solid #fff;"></iframe> 	
 
@@ -66,7 +70,7 @@
 			<div class="col">
 			<h4><center><p id =""  >Title</p></center></h4>
 
-			<center><p><input id = "{{.TitleID}}" value = "{{.ProductName}}{{.ProductDescription}}" type="text" name="title" placeholder="" readonly></p></center>
+			<center><p><input id = "{{.TitleID}}" value = "{{.ProductName}}{{.ProductDescription}}" type="text" name="" placeholder="" readonly></p></center>
 			</div>
 
 			<div class="col">
@@ -78,7 +82,7 @@
 
 			<div class="col">" 
 			<h4><center><p id = "" >Cost</p></center></h4>
-			<center><p>	<input id = "{{.CostID}}" value =    "${{.ProductCost}}"     type="" name="title" placeholder="" readonly>		</p></center>
+			<center><p>	<input id = "{{.CostID}}" value =    "${{.ProductCost}}"     type="" name="" placeholder="" readonly>		</p></center>
 		
 			</div>
 			</div>
@@ -86,7 +90,7 @@
 			<div class="col">
 			
 			<h4><center><p id = "" >Quantity</p></center></h4>
-			<center><p> <input id = "{{.QuantityID}}" value =  {{.ProductQuantity}}  type="number" name="title" placeholder="" readonly>	</p></center>
+			<center><p> <input id = "{{.QuantityID}}" value =  {{.ProductQuantity}}  type="number" name="" placeholder="" readonly>	</p></center>
 			</div>
 			
 			<div class="col">
@@ -94,13 +98,13 @@
 			
 				
 			<h4><center><p id = "" >Keyword 1</p></center></h4>
-			<center><p>	<input id = "{{.Key1ID}}" value = "{{.GKeyword1}}" type="text" name="title" placeholder="" readonly>		</p></center>
+			<center><p>	<input id = "{{.Key1ID}}" value = "{{.GKeyword1}}" type="text" name="" placeholder="" readonly>		</p></center>
 
 			</div>
 
 			<div class="col">
 			<h4><center><p id = "" >Keyword 2</p></center></h4>
-			<center><p>	<input id = "{{.Key2ID}}" value = "{{.GKeyword2}}" type="text" name="title" placeholder="" readonly>		</p></center>
+			<center><p>	<input id = "{{.Key2ID}}" value = "{{.GKeyword2}}" type="text" name="" placeholder="" readonly>		</p></center>
 
 			</div>
 
@@ -113,10 +117,10 @@
 			<div class="col">
 			
 			<h4><center><p id = "" >Amount purchased</p></center></h4>
-			<center><p><input id = "{{.AmountPurchasedID}}" value = "{{.AmountPurchased}}" type="text" name="title" placeholder="" readonly ></p></center>
+			<center><p><input id = "{{.AmountPurchasedID}}" value = "{{.AmountPurchased}}" type="text" name="" placeholder="" readonly ></p></center>
 
 			<h4><center><p id = "" >Amount to purchase</p></center></h4>
-			<center><p><input id = "{{.AmountToPurchaseID}}" value = 0 type="number" name="title" placeholder="" ></p></center>
+			<center><p><input id = "{{.AmountToPurchaseID}}" value = 0 type="number" name="" placeholder="" ></p></center>
 			</div>
 		    </div>
 			<div class="row">
@@ -184,67 +188,7 @@
 
 				}//for
 
-				/*
 				
-				//with additional keys added above
-				
-				var sessionCounter = -1;
-
-				var thisLoopNum = -1;  
-				for(let key of keys) {
-					thisLoopNum++;
-					
-					//remove initial keys that are repeated again from code above, and write the code that was rewritten without the one key that is removed
-					//alert("remove----");
-					//alert(key);
-
-
-					//session variable 
-					if(key =="session_userID")
-					{
-						alert("first session variable");
-						sessionCounter++;
-					}
-
-					alert("sessioncounter");
-					alert(key);
-					alert(sessionCounter);
-					//second
-					if(key =="session_userID" && (sessionCounter > 0))
-					{
-						alert("here+AAAAA");
-						//alert(key);
-						continue;
-					}
-					//first sessionstorage:  user
-					else if(key =="session_userID" && (sessionCounter == 0))
-					{
-						alert("remove+BBBBB");
-						alert(key);
-						sessionStorage.removeItem(key);
-					}
-
-					else if (thisLoopNum <= counterOfNewlyAdded)
-					{
-						alert("removeCCCC");
-						alert(counterOfNewlyAdded);
-						
-						alert(key);
-						sessionStorage.removeItem(key);
-					}
-					
-
-					
-					
-					
-
-				}//for loop end
-				//var queryString = string.substring(0, string.length-1);
-				/////
-				
-
-
-				*/
 
 
 				
