@@ -33,18 +33,21 @@ var3 = var1 + var2;
       <input   id="button7"  type="button" value="checkout"/>
       <input   name = "search" type="text" id="search" name="search" placeholder= "apple1" value="apple1"/>
       <input   id="button6"  type="button" value="Search"/>
+      
 
-
+      
       <div id = "firstdiv" ></div>
       <div id ="buttons">
+
+       
       <br><br><br>
      
-     
+      
 
       </div>
 
       
-     
+      
       
       <div id = "lastdiv"></div>
       
@@ -99,9 +102,14 @@ $(document).ready(function () {
 
 
   
-  //template button press - display
+    var flagForScrolling = 0;
+    
+  //template button press - display   SEARCH
     $(document).ready(function () {
       $('#button6').click(function () {
+
+        
+       
         var string = ""
         let keys = Object.keys(sessionStorage);
 
@@ -128,6 +136,7 @@ $(document).ready(function () {
         var querystring = "var=" + val1;
       }
 
+      buttons.innerHTML = buttons.innerHTML + "<div id ='apple2'></div>";
         
         alert("querystring10a");
         alert(querystring);
@@ -143,8 +152,41 @@ $(document).ready(function () {
               success: function (result) {
                 
                 
-                $('#buttons').html(result);
+                //var element = document.getElementById("buttons");
+                //element.scrollTop = 0;
+
+                alert("check this");
+                alert(result);
+
+                
+                alert("important check");
+                alert(val1);
+                //var result1 = "<a href='#apple1'>*apple*</a>" += result;
+                var result1 = "<a href='#apple1'>*apple*</a>" + result;
+               document.getElementById("buttons").innerHTML   += result1;
+                
                
+
+                
+
+               //$('#buttons').html(result);
+               
+               //var heigth = $('buttons').height;
+               //alert("scroll");
+              // var msgDiv = document.getElementByID("buttons");
+              // msgDiv.scrollTop = msgDiv.scrollHeight - 100;
+
+              // document.scrollTop = botto
+
+               // document.getElementById("buttons").innerHTML +=  result;
+
+                //var elmnt = document.getElementById("buttons");
+
+                //const scrollIntoViewOptions = { behavior: "smooth", block: "start" };   
+                //document.getElementById("buttons").scrollIntoView(scrollIntoViewOptions);
+                //setFocusOnDivWithId("buttons");
+                
+                //elmnt.scrollIntoView();
               
               
              

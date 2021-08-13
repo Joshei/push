@@ -868,6 +868,7 @@ func receiveAjax(w http.ResponseWriter, r *http.Request) {
 */
 
 type forTemplate struct {
+	Link string
 	Condition int
 	AmountPurchased int
 	ProductID       int
@@ -1007,6 +1008,13 @@ func display1(w http.ResponseWriter, r *http.Request) {
 
 	db := dbConn()
 
+	//var x = 0;
+	//while(len(key))
+	//{
+
+	//}
+
+
 	stmt, err := db.Prepare("SELECT products.ProductKeyword1, products.ProductKeyword2, products.ProductKeyword3, products.ProductName, products.ProductID, " +
 		"products.ProductDescription, products.ProductCost, products.ProductQuantity, products.ProductCatTitle , products.ProductFilename " +
 		"FROM products WHERE " +
@@ -1027,6 +1035,7 @@ func display1(w http.ResponseWriter, r *http.Request) {
 	var templ1 forTemplate
 
 	var Condition = 0;
+	var Link = globKeyword;
 	for rows.Next() {
 
 		Condition++;
@@ -1086,7 +1095,7 @@ func display1(w http.ResponseWriter, r *http.Request) {
 			AmountPurchased = 0
 		}
 
-		templ1 = forTemplate{Condition, AmountPurchased, ProductID, ProductCatTitle, titleID, ProductName, descID, ProductDescription, costID, ProductCost, quantityID, ProductQuantity,
+		templ1 = forTemplate{Link, Condition, AmountPurchased, ProductID, ProductCatTitle, titleID, ProductName, descID, ProductDescription, costID, ProductCost, quantityID, ProductQuantity,
 			key1ID, globKeyword, key2ID, globKeyword, key3ID, globKeyword, ProductFilename, AmountToPurchaseID, AmountPurchasedID, mainDivID}
 
 		fmt.Println(templ1)
