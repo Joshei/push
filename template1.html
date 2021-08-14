@@ -36,7 +36,14 @@
 
 
 			
-	 
+			{{if(eq .Condition 1)}}
+
+			<br><br>
+			<div id = "{{.Link}}">Top of record.</div><br><br>
+
+			{{end}}
+			
+			
 			
 			<iframe class = "" id="upload_target" name="upload_target"  style="width:0;height:0;border:0px solid #fff;"></iframe> 	
 
@@ -46,7 +53,7 @@
 			
 
 
-			<div id = "">zzzz</div>
+			
 			<div id  = "" class = "test100_" Value = "" name = "">  
 			
 			
@@ -54,8 +61,7 @@
 			<div class="row" > 
 			<div class="col">
 			 <p id = "">product id   : {{.ProductID}} </p>" 
-			<p>category id  : {{.ProductCatTitle}}</p>
-
+			
 
 		
 

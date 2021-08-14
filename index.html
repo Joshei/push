@@ -33,18 +33,22 @@ var3 = var1 + var2;
       <input   id="button7"  type="button" value="checkout"/>
       <input   name = "search" type="text" id="search" name="search" placeholder= "apple1" value="apple1"/>
       <input   id="button6"  type="button" value="Search"/>
-
-
-      <div id = "firstdiv" ></div>
-      <div id ="buttons">
-      <br><br><br>
-     
-     
-
-      </div>
+      <br><br>
+      
 
       
+      <div id = "firstdiv" ></div>
+      <div id ="buttons"> </div>
+      <div id ="templateOneHere"> </div>
+       
+      <br><br><br>
      
+      
+
+     
+
+      
+      
       
       <div id = "lastdiv"></div>
       
@@ -99,9 +103,14 @@ $(document).ready(function () {
 
 
   
-  //template button press - display
+    var flagForScrolling = 0;
+    
+  //template button press - display   SEARCH
     $(document).ready(function () {
       $('#button6').click(function () {
+
+        
+       
         var string = ""
         let keys = Object.keys(sessionStorage);
 
@@ -128,6 +137,7 @@ $(document).ready(function () {
         var querystring = "var=" + val1;
       }
 
+     //buttons.innerHTML = buttons.innerHTML + "<div id ='apple2'></div>";
         
         alert("querystring10a");
         alert(querystring);
@@ -142,11 +152,21 @@ $(document).ready(function () {
               data: querystring,
               success: function (result) {
                 
-                
-                $('#buttons').html(result);
+                var result1 = "<a href='#" + val1 + "'>" + val1 + "</a><br>";
+
+                alert("important check");
+                alert(result1);
+
+                //var result2 = "<a href='#apple1'>*apple*</a>" + result;
                
+                document.getElementById("buttons").innerHTML   += result1;
+
+                document.getElementById("templateOneHere").innerHTML   += result;
               
-              
+
+               
+               
+               
              
               
                 }
