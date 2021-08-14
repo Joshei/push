@@ -131,8 +131,9 @@
 		    </div>
 			<div class="row">
 			<div class="col">
-			<center><button onclick="removeRecord('{{.MainDivID}}',  '{{.ProductID}}' )">Remove Record</button></center>
-			<center><button onclick="changeFields('{{.ProductQuantity}}', '{{.ProductID}}' , '{{.QuantityID}}', '{{.AmountPurchasedID}}', '{{.AmountToPurchaseID}}' )">submit</button></center>
+				
+			<button onclick="removeRecord('{{.MainDivID}}',  '{{.ProductID}}' )">Remove Record</button>
+			<button onclick="changeFields('{{.ProductQuantity}}', '{{.ProductID}}' , '{{.QuantityID}}', '{{.AmountPurchasedID}}', '{{.AmountToPurchaseID}}' )">submit</button>
 			</div>
 			</div>
 			</div>
@@ -142,7 +143,7 @@
 			
 			<script>
 				var firstTime = "yes";
-			 var gAccount = [];
+			 //var gAccount = [];
 			 //var originalQuantity = "{{.ProductQuantity}}";
 
 			function removeRecord(mainDivForRecord, productID)
@@ -214,7 +215,7 @@
 
 				
 
-				//alert(quantityID);
+				
 
 				var amountToBePurchased  = 0;
 				var  amountInPurchasedField = 0;
