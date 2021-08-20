@@ -18,6 +18,8 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
+
+	
 )
 
 var globalFlagisVariable = "no"
@@ -30,7 +32,7 @@ type product struct {
 }
 
 type Product1 struct {
-	ProductIDID string
+	ProductIDID        string
 	RemoveRecordDivID  string
 	GrandTotalStringID string
 
@@ -629,7 +631,7 @@ func createTemplate2(w http.ResponseWriter, r *http.Request) {
 		BoughtID := var5 + (strconv.Itoa(i))
 		GrandTotalStringID := var6 + (strconv.Itoa(i))
 		RemoveRecordDivID := var7 + (strconv.Itoa(i))
-		ProductIDID := var8 +(strconv.Itoa(i))
+		ProductIDID := var8 + (strconv.Itoa(i))
 		//ID := var8 + (strconv.Itoa(i))
 
 		var prodid, err = (strconv.Atoi(allIds[i]))
@@ -666,6 +668,7 @@ func createTemplate2(w http.ResponseWriter, r *http.Request) {
 		//defer rows.Close()
 
 		//jumps past this, first run through
+
 		for rows.Next() {
 
 			//fmt.Println("ProductList1")
@@ -809,7 +812,7 @@ func createTemplate2(w http.ResponseWriter, r *http.Request) {
 func addProduct(productidid string, removerecorddivID string, totalID string, total string, boughtid string, bought int, totalcost string, totalcostid string, ProductQuantity int, costid string, amountid string, condition int, condition2 int, prodid int, quant int, name string, div string, cat string, cost string) {
 
 	prod := Product1{
-		ProductIDID: productidid,
+		ProductIDID:        productidid,
 		RemoveRecordDivID:  removerecorddivID,
 		GrandTotalStringID: totalID,
 		GrandTotalString:   total,
@@ -994,7 +997,7 @@ var counter1 = 0
 /////////
 func display1(w http.ResponseWriter, r *http.Request) {
 
-	var productsDisplayed []int
+	
 
 	fmt.Println("+++++++++++++++++")
 
@@ -1016,7 +1019,7 @@ func display1(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("filters not present3")
 	}
 
-	globKeyword := key1[0]
+	//globKeyword := key1[0]
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 
@@ -1025,10 +1028,12 @@ func display1(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("in display 1")
 
 	db := dbConn()
+
+	var productsDisplayed = []int{}
 	var m = 0
 	for m = 0; m < len(key1); m++ {
 
-		globKeyword = key1[m]
+		globKeyword := key1[m]
 
 		stmt, err := db.Prepare("SELECT products.ProductKeyword1, products.ProductKeyword2, products.ProductKeyword3, products.ProductName, products.ProductID, " +
 			"products.ProductDescription, products.ProductCost, products.ProductQuantity, products.ProductCatTitle , products.ProductFilename " +
@@ -1053,7 +1058,7 @@ func display1(w http.ResponseWriter, r *http.Request) {
 
 			Condition++
 			var ProductCost float64
-			var ProductQuantity int
+			var ProductQuantity, ProductID int
 			var gKeyword1, gKeyword2, gKeyword3, ProductName, ProductDescription, ProductCatTitle, ProductFilename, AmountToPurchaseID, AmountPurchasedID string
 
 			err = rows.Scan(&gKeyword1, &gKeyword2, &gKeyword3, &ProductName, &ProductID, &ProductDescription, &ProductCost, &ProductQuantity, &ProductCatTitle, &ProductFilename)
@@ -1063,12 +1068,19 @@ func display1(w http.ResponseWriter, r *http.Request) {
 			}
 
 			var m = 0
+			var Flag = "didnt"
 			//check of product is already in another search
 			for m = 0; m < len(productsDisplayed); m++ {
 
+				//product already is dispalyed
 				if ProductID == productsDisplayed[m] {
-					continue
+					Flag = "did"
+					break
+
 				}
+			}
+			if Flag == "did" {
+				continue
 			}
 
 			productsDisplayed = append(productsDisplayed, ProductID)
@@ -1120,7 +1132,7 @@ func display1(w http.ResponseWriter, r *http.Request) {
 			}
 
 			templ1 = forTemplate{Link, Condition, AmountPurchased, ProductID, ProductCatTitle, titleID, ProductName, descID, ProductDescription, costID, ProductCost, quantityID, ProductQuantity,
-				key1ID, globKeyword, key2ID, globKeyword, key3ID, globKeyword, ProductFilename, AmountToPurchaseID, AmountPurchasedID, mainDivID}
+				key1ID, gKeyword1, key2ID, gKeyword2, key3ID, gKeyword3, ProductFilename, AmountToPurchaseID, AmountPurchasedID, mainDivID}
 
 			fmt.Println(templ1)
 

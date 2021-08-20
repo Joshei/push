@@ -77,7 +77,6 @@ function insert(pid, quantLeft) {
 
 
 
-
 $(document).ready(function () {
       $('#button3').click(function () {
 
@@ -111,19 +110,24 @@ $(document).ready(function () {
 
 
   
+	
 	var querystring = "";
 
   //template button press - display searches a keyword
     //$(document).ready(function () {
       $("#button6").click(function () {
 
-		
-        var string = ""
+
+		var storedArray = [];
+		var string = "";
         let keys = Object.keys(sessionStorage);
 
         var wasKeys = "no";
 
 
+		var isFirstTime = "yes";
+		var querystring = "";
+		{
 		//let storedArray = ["test"];
       for(let key of keys) {
         if(key == "session_userID")
@@ -169,40 +173,133 @@ $(document).ready(function () {
       if(wasKeys == "yes"){
 
 		
-        var testArray = [val1];
-		//puts testarray in searchterms
-		alert("in here111");
-		//testArray = (testArray.join());
-		window.sessionStorage.setItem("searchterms", JSON.stringify(testArray));
+		////////
+
+
 		
-		var storedArray = JSON.parse(sessionStorage.getItem("searchterms"));
+		var testArray = [val1];
+
+		/////////
+
+		storedArray = JSON.parse(sessionStorage.getItem("searchterms"));
+		alert("this should work111");
+		alert(storedArray);
+		///////////
+
+		//////////
+		if (storedArray === null)
+		{
+			alert("really did go here!");
+		window.sessionStorage.setItem("searchterms", JSON.stringify(testArray));
+		querystring += ("var=" + val1 + "&");
+		
+		}
+		else{
 
 
-		for (i = 0; i < storedArray.length; i++) {
+		//////////
+
+		storedArray = JSON.parse(sessionStorage.getItem("searchterms"));
+		alert("this should work");
+		alert(storedArray);
+
+		var flagCanInsert = "yes"
+		for (i = 0; i < storedArray.length ; i++)
+		{
+			
+				if (storedArray[i] == val1 )
+				{
+					flagCanInsert = "no"
+					
+					break;
+				}
+		}
+				if (flagCanInsert  == "yes")
+				{
+				
+					querystring += ("var=" + val1 + "&");
+					querystring += string;
+
+					alert("in here!!!1");
+					
+					window.sessionStorage.setItem("searchterms", JSON.stringify(testArray));
+					
 
 
-		querystring += ("var=" + storedArray[i] + "&");
-		querystring += string;
-     	 }
+				}
 
-	  }	
+		}
+	}
+		///////
+		
+	
+
+
+	
       else
       {
 
 		
+
+		
+
+
+
+		/////////
+		
+		
 		var testArray = [val1];
-		alert("in here222");
-		//testArray = (testArray.join());
-		//puts testarray in searchterms
-		window.sessionStorage.setItem("searchterms", JSON.stringify(testArray));
-		
-		var storedArray = JSON.parse(sessionStorage.getItem("searchterms"));
-		//storedArray.push(val1);
-		for (i = 0; i < storedArray.length; i++)
+
+		storedArray = JSON.parse(sessionStorage.getItem("searchterms"));
+		alert("this should workAAA");
+		alert(storedArray);
+
+		if (storedArray === null)
 		{
-			querystring += ("var=" + storedArray[i] + "&");
-		}
+			alert("really did go here!");
+		window.sessionStorage.setItem("searchterms", JSON.stringify(testArray));
+					
+		querystring += ("var=" + val1 + "&");
 		
+		}
+		else
+		{
+
+		storedArray = JSON.parse(sessionStorage.getItem("searchterms"));
+		var flagCanInsert = "yes"
+		for (i = 0; i < storedArray.length ; i++)
+		{
+				if (storedArray[i] == val1 )
+				{
+					flagCanInsert = "no"
+					
+					break;
+				}
+		}
+				if (flagCanInsert  == "yes")
+				{
+				
+					querystring += ("var=" + val1 + "&");
+				
+					
+					
+					
+					alert("in here!!!2");
+					
+					window.sessionStorage.setItem("searchterms", JSON.stringify(testArray));
+				}
+			}
+		}
+
+		if (querystring == "")
+		{
+			return(-1);
+		}
+		////////
+		
+		
+
+
       }
 
         
